@@ -1,0 +1,96 @@
+netgdx-30 :
+  netgdx-4 :
+    latency : 74.387
+    flow : 151.102
+  netgdx-5 :
+    latency : 74.649
+    flow : 172.868
+  netgdx-7 :
+    latency : 76.795
+    flow : 170.378
+  netgdx-8 :
+    latency : 79.823
+    flow : 173.417
+  netgdx-9 :
+    latency : 80.562
+    flow : 174.385
+netgdx-4 :
+  netgdx-30 :
+    latency : 63.217
+    flow : 157.702
+  netgdx-5 :
+    latency : 75.090
+    flow : 175.065
+  netgdx-7 :
+    latency : 77.200
+    flow : 173.463
+  netgdx-8 :
+    latency : 76.592
+    flow : 179.281
+  netgdx-9 :
+    latency : 77.105
+    flow : 178.960
+netgdx-5 :
+  netgdx-30 :
+    latency : 64.719
+    flow : 155.130
+  netgdx-4 :
+    latency : 61.488
+    flow : 156.474
+  netgdx-7 :
+    latency : 78.297
+    flow : 158.213
+  netgdx-8 :
+    latency : 77.176
+    flow : 180.827
+  netgdx-9 :
+    latency : 78.905
+    flow : 158.725
+netgdx-7 :
+  netgdx-30 :
+    latency : 62.609
+    flow : 155.246
+  netgdx-4 :
+    latency : 61.405
+    flow : 157.780
+  netgdx-5 :
+    latency : 58.663
+    flow : 156.128
+  netgdx-8 :
+    latency : 80.955
+    flow : 179.638
+  netgdx-9 :
+    latency : 82.481
+    flow : 159.510
+netgdx-8 :
+  netgdx-30 :
+    latency : 64.325
+    flow : 156.104
+  netgdx-4 :
+    latency : 60.236
+    flow : 156.758
+  netgdx-5 :
+    latency : 58.532
+    flow : 157.174
+  netgdx-7 :
+    latency : 60.856
+    flow : 156.814
+  netgdx-9 :
+    latency : 83.458
+    flow : 159.396
+netgdx-9 :
+  netgdx-30 :
+    latency : 64.945
+    flow : 155.611
+  netgdx-4 :
+    latency : 62.573
+    flow : 157.134
+  netgdx-5 :
+    latency : 58.591
+    flow : 153.533
+  netgdx-7 :
+    latency : 59.390
+    flow : 155.683
+  netgdx-8 :
+    latency : 60.415
+    flow : 154.599
