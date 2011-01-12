@@ -1,0 +1,26 @@
+= bwlat
+latency_flow_tests
+
+== description
+OAR LATENCY FLOW TESTS
+
+Cree une matrice des debits et latence entre chaque noeud (sauf le rank 0) de l'execution MPI, dans les deux sens,
+ou separe la liste des noeuds en deux pour faire une bissection.
+
+== options
+OAR FLOW LATENCY TESTS
+------------------------
+	-s <n>K   : Message size for flow tests exchanges, in bytes (with K, M, or G suffix). Min 64K, default 1M.
+	-p <n>    : Tests precision (repeats each test <n> times and make averages). Default 10.
+	-b        : Bisection (first node of the first half with the first node of the seconde half, and so on).
+	-rb, -r   : Bisection, with random pairs.
+	-bg, -g   : Bisection, with gnuplot coordinates output.
+	-o <file> : YAML output.
+
+	-h        : This help.
+
+AUTHORS : <julien@vaubourg.com>
+          <sebastien@badia.fr>
+
+== misc
+Grid'5000 2010
