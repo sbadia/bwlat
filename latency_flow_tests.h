@@ -1,3 +1,28 @@
+/*
+ * MPI LATENCY FLOW TESTS
+ *
+ * Cree une matrice des debits et latence entre chaque noeud (sauf le rank 0) de l'execution MPI, dans les deux sens,
+ * ou separe la liste des noeuds en deux pour faire une bissection.
+ *
+ * OPTIONS : Voir -h
+ *
+ * Copyright (C) 2010 Julien VAUBOURG / Sébastien BADIA
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 #ifndef LATENCY_FLOW_TESTS
 #define LATENCY_FLOW_TESTS
 

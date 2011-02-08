@@ -1,18 +1,32 @@
 /*
- * OAR LATENCY FLOW TESTS
+ * MPI LATENCY FLOW TESTS
  *
  * Cree une matrice des debits et latence entre chaque noeud (sauf le rank 0) de l'execution MPI, dans les deux sens,
  * ou separe la liste des noeuds en deux pour faire une bissection.
  *
  * OPTIONS : Voir -h
  *
- * AUTEURS : <julien@vaubourg.com>
- *	     <seb@sebian.fr> <badia.seb@gmail.com>
+ * Copyright (C) 2010 Julien VAUBOURG / Sébastien BADIA
  *
- * 2010, pour Grid5000
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
- 
+
+// Patch 001 (04/02/11) : Ajout d'une condition pour la reduction des noms des
+// noeuds (fin de la fonction formatTestsResult), afin de prendre en compte les
+// hostnames qui ne sont representes sous forme de FQDN. Merci Nicolas CAPIT.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -313,7 +327,7 @@ void initOptions(int argc, char** argv, int nbNodes, int rank, int* pktSize, int
 					puts("\t-b        : Bisection (first node of the first half with the first node of the seconde half, and so on).");
 					puts("\t-rb, -r   : Bisection, with random pairs.");
 					puts("\t-bg, -g   : Bisection, with gnuplot coordinates output.");
-					puts("\t-o <file> : YAML output.\n");
+					puts("\t-o <file> : YAML output.");
 					puts("\t-h        : This help.\n");
 					puts("AUTHORS : <julien@vaubourg.com>\n          <sebastien.badia@gmail.com>\n");
 				}
@@ -522,9 +536,10 @@ void formatTestsResult(MyResult* r, YourTest* t, int rank) {
 	/* Renseignement du nom du noeud courant */
 	MPI_Get_processor_name(r->myHostname, &sizeHostname);
 
-	/* Reduction du nom du noeud a sa premiere partie (on vire .site.grid5000.fr) */
-	sep = strchr(r->myHostname, '.');
-	*sep = '\0';
+	/* Reduction du nom du noeud a sa premiere partie (ex. on vire .site.grid5000.fr), si
+	celui-ci semble renvoyer un FQDN (presence d'au moins un point) en guise de hostname */
+	if((sep = strchr(r->myHostname, '.')) != NULL)
+		*sep = '\0';
 }
 
 /*
