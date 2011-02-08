@@ -1,0 +1,45 @@
+*** latency_flow_tests.c.old	2011-02-04 19:43:59.000000000 +0100
+--- latency_flow_tests.c	2011-02-04 20:02:02.000000000 +0100
+***************
+*** 22,28 ****
+   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   *
+   */
+!  
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+--- 22,32 ----
+   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   *
+   */
+! 
+! // Patch 001 (04/02/11) : Ajout d'une condition pour la reduction des noms des
+! // noeuds (fin de la fonction formatTestsResult), afin de prendre en compte les
+! // hostnames qui ne sont representes sous forme de FQDN. Merci Nicolas CAPIT.
+! 
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+***************
+*** 532,540 ****
+  	/* Renseignement du nom du noeud courant */
+  	MPI_Get_processor_name(r->myHostname, &sizeHostname);
+  
+! 	/* Reduction du nom du noeud a sa premiere partie (on vire .site.grid5000.fr) */
+! 	sep = strchr(r->myHostname, '.');
+! 	*sep = '\0';
+  }
+  
+  /*
+--- 536,545 ----
+  	/* Renseignement du nom du noeud courant */
+  	MPI_Get_processor_name(r->myHostname, &sizeHostname);
+  
+! 	/* Reduction du nom du noeud a sa premiere partie (ex. on vire .site.grid5000.fr), si
+! 	celui-ci semble renvoyer un FQDN (presence d'au moins un point) en guise de hostname */
+! 	if((sep = strchr(r->myHostname, '.')) != NULL)
+! 		*sep = '\0';
+  }
+  
+  /*
