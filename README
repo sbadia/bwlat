@@ -7,6 +7,23 @@ OAR LATENCY FLOW TESTS
 Cree une matrice des debits et latence entre chaque noeud (sauf le rank 0) de l'execution MPI, dans les deux sens,
 ou separe la liste des noeuds en deux pour faire une bissection.
 
+== compilation
+$ mpicc latency_flow_tests.c -o bwlat
+
+== exemples
+$ mpirun --bind-to-core --report-bindings --machinefile nodes -n 4 ./bwlat
+$ mpirun --mca plm_rsh_agent oarsh --machinefile nodes ./bwlat
+
+== tips mpirun
+=== Exclure TCP:
+$ mpirun --mca btl self,openib
+
+=== Exclure openib:
+$ mpirun --mca btl self,tcp
+
+=== Exclude openib et ipoib:
+$ mpirun --mca btl self,tcp --mca btl_tcp_if_include lo,eth0
+
 == options
 OAR FLOW LATENCY TESTS
 ------------------------
